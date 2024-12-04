@@ -21,9 +21,9 @@ pipeline {
             steps {
                 // Create the emulator if not already created
                 sh '''
-                if [ ! -d "$ANDROID_SDK_ROOT/avd/jenkins_avd.avd" ]; then
-                  avdmanager create avd -n jenkins_avd -k "system-images;android-33;google_apis;x86_64" -d "pixel"
-                fi
+             
+                avdmanager create avd -n jenkins_avd -k "system-images;android-33;google_apis;x86_64" -d "pixel" --force
+             
                 '''
             }
         }
