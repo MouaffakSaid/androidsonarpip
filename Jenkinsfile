@@ -16,14 +16,25 @@ pipeline {
                 sh './gradlew assembleDebug' // or assembleRelease based on your requirements
             }
         }
-
-  stage('Start Emulator') {
+stages {
+        stage('Setup Emulator') {
             steps {
-                echo 'Starting Android Emulator...'
-                androidEmulator avdName: 'Test-AVD', targetABI: 'x86_64', density: 240, resolution: '480x800', locale: 'en_US'
-                timeout(time: 5, unit: 'MINUTES') {
-                    sh 'adb wait-for-device'
-                }
+                // Create the emulator if not already created
+                sh '''
+                if [ ! -d "$ANDROID_SDK_ROOT/avd/jenkins_avd.avd" ]; then
+                  avdmanager create avd -n jenkins_avd -k "system-images;android-33;google_apis;x86_64" -d "pixel"
+                fi
+                '''
+            }
+        }
+        stage('Start Emulator') {
+            steps {
+                sh '''
+                emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
+                # Wait for the emulator to boot
+                adb wait-for-device
+                adb shell input keyevent 82
+                '''
             }
         }
         
