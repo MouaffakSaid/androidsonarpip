@@ -30,7 +30,7 @@ pipeline {
         stage('Start Emulator') {
             steps {
                 sh '''
-                emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
+                /flutterdev/Android/sdk/tools/bin/emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
                 # Wait for the emulator to boot
                 adb wait-for-device
                 adb shell input keyevent 82
