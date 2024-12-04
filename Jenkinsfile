@@ -17,6 +17,14 @@ pipeline {
             }
         }
 
+stage('Start Emulator') {
+            steps {
+                echo 'Starting Emulator...'
+                androidEmulator avdName: 'Test-AVD', target: 'android-30'
+                sh 'adb devices' // Ensure the emulator is ready
+            }
+        }
+        
         stage('Run Code Coverage') {
             steps {
                 echo 'Running Code Coverage Analysis...'
