@@ -17,11 +17,13 @@ pipeline {
             }
         }
 
-stage('Start Emulator') {
+  stage('Start Emulator') {
             steps {
-                echo 'Starting Emulator...'
-                androidEmulator avdName: 'Test-AVD', target: 'android-30'
-                sh 'adb devices' // Ensure the emulator is ready
+                echo 'Starting Android Emulator...'
+                androidEmulator avdName: 'Test-AVD', targetABI: 'x86_64', density: 240, resolution: '480x800', locale: 'en_US'
+                timeout(time: 5, unit: 'MINUTES') {
+                    sh 'adb wait-for-device'
+                }
             }
         }
         
