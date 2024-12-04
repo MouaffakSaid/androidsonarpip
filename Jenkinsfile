@@ -16,7 +16,7 @@ pipeline {
                 sh './gradlew assembleDebug' // or assembleRelease based on your requirements
             }
         }
-stages {
+
         stage('Setup Emulator') {
             steps {
                 // Create the emulator if not already created
