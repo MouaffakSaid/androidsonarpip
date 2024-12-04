@@ -60,7 +60,7 @@ stage('Stop Emulator') {
                 sh 'adb -s emulator-5554 emu kill'
             }
         }
-    }
+    
     post {
         always {
             echo 'Cleaning up workspace...'
