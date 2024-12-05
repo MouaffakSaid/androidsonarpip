@@ -42,6 +42,15 @@ pipeline {
                 sh '''
                 emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
                 # Wait for the emulator to boot
+                #!/bin/bash
+        adb wait-for-device
+        BOOT_COMPLETED=""
+                while [[ "$BOOT_COMPLETED" != "1" ]]; do
+              BOOT_COMPLETED=$(adb shell getprop sys.boot_completed | tr -d '\r')
+              sleep 1
+            done
+         echo "Emulator is ready!"
+
                # adb wait-for-device
                 #adb shell input keyevent 82
                 '''
