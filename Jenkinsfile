@@ -17,26 +17,7 @@ pipeline {
             }
         }
 
-        stage('Setup Emulator') {
-            steps {
-                // Create the emulator if not already created
-                sh '''
-             
-                avdmanager create avd -n jenkins_avd -k "system-images;android-33;google_apis;x86_64" -d "pixel" --force
-             
-                '''
-            }
-        }
-        stage('Start Emulator') {
-            steps {
-                sh '''
-                /flutterdev/Android/sdk/tools/bin/emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
-                # Wait for the emulator to boot
-                adb wait-for-device
-                adb shell input keyevent 82
-                '''
-            }
-        }
+       
         
         stage('Run Code Coverage') {
             steps {
