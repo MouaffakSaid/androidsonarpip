@@ -6,7 +6,7 @@ pipeline {
         stage('Clean Workspace') {
             steps {
                 echo 'Cleaning workspace...'
-                sh './gradlew clean'
+                sh 'fastlane android run_clean'
             }
         }
 
