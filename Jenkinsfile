@@ -18,8 +18,8 @@ pipeline {
         stage('Build APK') {
             steps {
                 echo 'Building APK...'
-               // sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
-               sh './gradlew assembleDebug' // or assembleRelease based on your requirements
+               sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
+             //  sh './gradlew assembleDebug' // or assembleRelease based on your requirements
             }
         }
 
