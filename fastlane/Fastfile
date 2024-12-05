@@ -1,6 +1,13 @@
 default_platform(:android)
 
 platform :android do
+
+	# Lane to clean 
+  desc "Clean" 
+  lane :run_clean do 
+    gradle(task: "clean") 
+  end 
+
   # Lane to build APK
   desc "Build the APK"
   lane :build_apk do
