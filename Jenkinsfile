@@ -2,7 +2,7 @@ pipeline {
     
 
     agent {
-        docker { image 'cimg/android:2023.09.1' }
+        docker { image 'cimg/android:2024.11.1' }
        //docker { image 'amrka/android-emulator:pixelC_tablet_playstore-latest' } 
     }
 
