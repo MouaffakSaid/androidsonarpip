@@ -42,7 +42,7 @@ pipeline {
                 emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
                 # Wait for the emulator to boot
                # adb wait-for-device
-                3adb shell input keyevent 82
+                #adb shell input keyevent 82
                 '''
             }
         }
