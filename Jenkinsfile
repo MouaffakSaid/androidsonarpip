@@ -2,8 +2,10 @@ pipeline {
     
 
     agent {
-        docker { image 'cimg/android:2024.11.1' }
+        docker { image 'mouaffak1/dockeragent' }
+        //docker { image 'cimg/android:2024.11.1' }
        //docker { image 'amrka/android-emulator:pixelC_tablet_playstore-latest' } 
+        //mouaffak1/dockeragent
     }
 
 
@@ -29,7 +31,7 @@ pipeline {
                 sh '''
                 #if [ ! -d "$ANDROID_SDK_ROOT/avd/jenkins_avd.avd" ]; then
                   #sdkmanager --list
-                  sdkmanager --install   "system-images;android-35;google_apis;x86_64"
+                  #sdkmanager --install   "system-images;android-35;google_apis;x86_64"
                    
                   avdmanager create avd -n jenkins_avd -k "system-images;android-35;google_apis;x86_64" -d "pixel"
                    avdmanager list avd
