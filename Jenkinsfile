@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    
 
     agent {
         docker { image 'cimg/android:2023.09.1' }
