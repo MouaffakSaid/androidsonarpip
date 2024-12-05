@@ -3,7 +3,7 @@ pipeline {
 
     agent {
         //docker { image 'cimg/android:2023.09.1' }
-       docker { image 'cirrusci/android:api-30' } 
+       docker { image 'amrka/android-emulator' } 
     }
 
 
