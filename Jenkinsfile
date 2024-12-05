@@ -8,20 +8,20 @@ pipeline {
 
 
     stages {
-        stage('Clean Workspace') {
-            steps {
-                echo 'Cleaning workspace...'
-                sh 'fastlane android run_clean'
-            }
-        }
+        // stage('Clean Workspace') {
+        //     steps {
+        //         echo 'Cleaning workspace...'
+        //         sh 'fastlane android run_clean'
+        //     }
+        // }
 
-        stage('Build APK') {
-            steps {
-                echo 'Building APK...'
-               sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
-             //  sh './gradlew assembleDebug' // or assembleRelease based on your requirements
-            }
-        }
+        // stage('Build APK') {
+        //     steps {
+        //         echo 'Building APK...'
+        //        sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
+        //      //  sh './gradlew assembleDebug' // or assembleRelease based on your requirements
+        //     }
+        // }
 
        stage('Setup Emulator') {
             steps {
