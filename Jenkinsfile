@@ -28,7 +28,7 @@ pipeline {
                 // Create the emulator if not already created
                 sh '''
                 if [ ! -d "$ANDROID_SDK_ROOT/avd/jenkins_avd.avd" ]; then
-                  sdkmanager --install   "system-images;android-33;google_apis;x86_64"
+                  #sdkmanager --install   "system-images;android-33;google_apis;x86_64"
 
                   avdmanager create avd -n jenkins_avd -k "system-images;android-33;google_apis;x86_64" -d "pixel"
                 fi
@@ -40,8 +40,8 @@ pipeline {
                 sh '''
                 emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
                 # Wait for the emulator to boot
-                adb wait-for-device
-                adb shell input keyevent 82
+               # adb wait-for-device
+                3adb shell input keyevent 82
                 '''
             }
         }
