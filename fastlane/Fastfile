@@ -1,0 +1,22 @@
+default_platform(:android)
+
+platform :android do
+  # Lane to build APK
+  desc "Build the APK"
+  lane :build_apk do
+    gradle(task: "assembleDebug")
+  end
+
+  # Lane to run JaCoCo for code coverage
+  desc "Run JaCoCo code coverage"
+  lane :run_jacoco do
+    gradle(task: "jacocoDebugCodeCoverage")
+  end
+
+  # Lane to execute SonarQube analysis
+  desc "Run SonarQube analysis"
+  lane :run_sonar do
+    gradle(task: "sonar")
+  end
+end
+
