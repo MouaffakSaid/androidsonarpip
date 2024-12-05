@@ -13,7 +13,7 @@ pipeline {
         stage('Build APK') {
             steps {
                 echo 'Building APK...'
-                sh './gradlew assembleDebug' // or assembleRelease based on your requirements
+                sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
             }
         }
 
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 echo 'Running Code Coverage Analysis...'
 
-                sh './gradlew jacocoDebugCodeCoverage'
+                sh 'fastlane android run_jacoco'
             }
         }
 
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 echo 'Running SonarQube analysis...'
                 withSonarQubeEnv('SonarQube') { // Ensure the correct SonarQube instance is configured in Jenkins
-                    sh './gradlew sonar'
+                    sh 'fastlane android run_sonar'
                 }
             }
         }
