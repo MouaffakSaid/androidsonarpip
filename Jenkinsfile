@@ -79,7 +79,7 @@ pipeline {
                     sh 'fastlane android run_sonar'
                 }
             }
-        }
+        
 
 
      stage('Build APK') {
@@ -89,6 +89,8 @@ pipeline {
              //  sh './gradlew assembleDebug' // or assembleRelease based on your requirements
             }
         }
+    }
+        
     
     post {
         always {
