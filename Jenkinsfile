@@ -87,17 +87,11 @@ pipeline {
             }
         }
 
-stage('Stop Emulator') {
-            steps {
-                sh 'adb -s emulator-5554 emu kill'
-            }
-        }
-            }
-    
+
     post {
         always {
             echo 'Cleaning up workspace...'
-            sh './gradlew clean'
+           // sh './gradlew clean'
         }
         success {
             echo 'Build and analysis completed successfully!'
