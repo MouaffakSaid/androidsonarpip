@@ -10,7 +10,7 @@ pipeline {
 
  environment {
 
-     APK_OUTPUT_PATH = "app/build/outputs/apk/debug/app-release.apk"
+     APK_OUTPUT_PATH = "app/build/outputs/apk/release/app-release-unsigned.apk"
  }
     stages {
         // stage('Clean Workspace') {
