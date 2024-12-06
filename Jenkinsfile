@@ -81,13 +81,13 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 echo 'Running SonarQube analysis...'
-                withSonarQubeEnv('SonarQube') { // Ensure the correct SonarQube instance is configured in Jenkins
+                //withSonarQubeEnv('SonarQube') { // Ensure the correct SonarQube instance is configured in Jenkins
                     sh 'fastlane android run_sonar'
                 }
             }
         }
 
-    }
+    
     post {
         always {
             echo 'Cleaning up workspace...'
@@ -100,4 +100,4 @@ pipeline {
             echo 'Build or analysis failed!'
         }
     }
-
+}
