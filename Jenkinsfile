@@ -79,9 +79,7 @@ pipeline {
                     sh 'fastlane android run_sonar'
                 }
             }
-        
-
-
+      
      stage('Build APK') {
             steps {
                 echo 'Building APK...'
