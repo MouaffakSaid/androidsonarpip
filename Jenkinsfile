@@ -17,13 +17,7 @@ pipeline {
         //     }
         // }
 
-        // stage('Build APK') {
-        //     steps {
-        //         echo 'Building APK...'
-        //        sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
-        //      //  sh './gradlew assembleDebug' // or assembleRelease based on your requirements
-        //     }
-        // }
+       
 
        // stage('Setup Emulator') {
        //      steps {
@@ -70,13 +64,13 @@ pipeline {
         //     }
         // }
         
-        // stage('Run Code Coverage') {
-        //     steps {
-        //         echo 'Running Code Coverage Analysis...'
+        stage('Run Code Coverage') {
+            steps {
+                echo 'Running Code Coverage Analysis...'
 
-        //         sh 'fastlane android run_jacoco'
-        //     }
-        // }
+                sh 'fastlane android run_jacoco'
+            }
+        }
 
         stage('SonarQube Analysis') {
             steps {
@@ -87,6 +81,14 @@ pipeline {
             }
         }
 
+
+     stage('Build APK') {
+            steps {
+                echo 'Building APK...'
+               sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
+             //  sh './gradlew assembleDebug' // or assembleRelease based on your requirements
+            }
+        }
     
     post {
         always {
