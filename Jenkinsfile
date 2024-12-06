@@ -43,7 +43,7 @@ pipeline {
         stage('Start Emulator') {
             steps {
                 sh '''
-               adb connect 192.168.100.240:5554
+               adb connect 192.168.100.240:5555
                 adb devices
                # adb wait-for-device
                 #adb shell input keyevent 82
