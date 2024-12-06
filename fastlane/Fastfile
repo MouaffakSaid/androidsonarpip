@@ -11,7 +11,7 @@ platform :android do
   # Lane to build APK
   desc "Build the APK"
   lane :build_apk do
-    gradle(task: "assembleDebug")
+    gradle(task: "assembleRelease")
   end
 
   # Lane to run JaCoCo for code coverage
