@@ -40,16 +40,16 @@ pipeline {
        //      }
        //  }
 
-        stage('Start Emulator') {
-            steps {
-                sh '''
-               adb connect 192.168.100.240:5555
-                adb devices
-               # adb wait-for-device
-                #adb shell input keyevent 82
-                '''
-            }
-        }
+        // stage('Start Emulator') {
+        //     steps {
+        //         sh '''
+        //        adb connect 192.168.100.240:5555
+        //         adb devices
+        //        # adb wait-for-device
+        //         #adb shell input keyevent 82
+        //         '''
+        //     }
+        // }
         // stage('Start Emulator') {
         //     steps {
         //         sh '''
@@ -70,13 +70,13 @@ pipeline {
         //     }
         // }
         
-        stage('Run Code Coverage') {
-            steps {
-                echo 'Running Code Coverage Analysis...'
+        // stage('Run Code Coverage') {
+        //     steps {
+        //         echo 'Running Code Coverage Analysis...'
 
-                sh 'fastlane android run_jacoco'
-            }
-        }
+        //         sh 'fastlane android run_jacoco'
+        //     }
+        // }
 
         stage('SonarQube Analysis') {
             steps {
@@ -87,7 +87,7 @@ pipeline {
             }
         }
 
-
+    }
     post {
         always {
             echo 'Cleaning up workspace...'
@@ -100,4 +100,4 @@ pipeline {
             echo 'Build or analysis failed!'
         }
     }
-}
+
