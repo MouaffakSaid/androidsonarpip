@@ -25,39 +25,50 @@ pipeline {
         //     }
         // }
 
-       stage('Setup Emulator') {
-            steps {
-                // Create the emulator if not already created
-                sh '''
-                #if [ ! -d "$ANDROID_SDK_ROOT/avd/jenkins_avd.avd" ]; then
-                  #sdkmanager --list
-                  sdkmanager --install   "system-images;android-35;google_apis;x86_64"
-                   #kvm-ok
-                  avdmanager create avd -n jenkins_avd -k "system-images;android-35;google_apis;x86_64" -d "pixel"
-                   avdmanager list avd
-                #fi
-                '''
-            }
-        }
+       // stage('Setup Emulator') {
+       //      steps {
+       //          // Create the emulator if not already created
+       //          sh '''
+       //          #if [ ! -d "$ANDROID_SDK_ROOT/avd/jenkins_avd.avd" ]; then
+       //            #sdkmanager --list
+       //            sdkmanager --install   "system-images;android-35;google_apis;x86_64"
+       //             #kvm-ok
+       //            avdmanager create avd -n jenkins_avd -k "system-images;android-35;google_apis;x86_64" -d "pixel"
+       //             avdmanager list avd
+       //          #fi
+       //          '''
+       //      }
+       //  }
+
         stage('Start Emulator') {
             steps {
                 sh '''
-                emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect 
-                # Wait for the emulator to boot
-                #!/bin/bash
-        adb wait-for-device
-        BOOT_COMPLETED=""
-                while [[ "$BOOT_COMPLETED" != "1" ]]; do
-              BOOT_COMPLETED=$(adb shell getprop sys.boot_completed | tr -d '\r')
-              sleep 1
-            done
-         echo "Emulator is ready!"
-
+               adb connect 192.168.100.240:5554
+                adb devices
                # adb wait-for-device
                 #adb shell input keyevent 82
                 '''
             }
         }
+        // stage('Start Emulator') {
+        //     steps {
+        //         sh '''
+        //         emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect 
+        //         # Wait for the emulator to boot
+        //         #!/bin/bash
+        // adb wait-for-device
+        // BOOT_COMPLETED=""
+        //         while [[ "$BOOT_COMPLETED" != "1" ]]; do
+        //       BOOT_COMPLETED=$(adb shell getprop sys.boot_completed | tr -d '\r')
+        //       sleep 1
+        //     done
+        //  echo "Emulator is ready!"
+
+        //        # adb wait-for-device
+        //         #adb shell input keyevent 82
+        //         '''
+        //     }
+        // }
         
         stage('Run Code Coverage') {
             steps {
