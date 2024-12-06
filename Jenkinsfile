@@ -13,12 +13,12 @@ pipeline {
      APK_OUTPUT_PATH = "app/build/outputs/apk/release/app-release-unsigned.apk"
  }
     stages {
-        // stage('Clean Workspace') {
-        //     steps {
-        //         echo 'Cleaning workspace...'
-        //         sh 'fastlane android run_clean'
-        //     }
-        // }
+        stage('Clean Workspace') {
+            steps {
+                echo 'Cleaning workspace...'
+                sh 'fastlane android run_clean'
+            }
+        }
 
        
 
