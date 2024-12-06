@@ -2,10 +2,10 @@ pipeline {
     
 
     agent {
-        docker { image 'mouaffak1/dockeragent' }
+        docker { image 'budtmo/docker-android' }
         //docker { image 'cimg/android:2024.11.1' }
        //docker { image 'amrka/android-emulator:pixelC_tablet_playstore-latest' } 
-        //mouaffak1/dockeragent
+        //mouaffak1/dockeragent  budtmo/docker-android
     }
 
 
