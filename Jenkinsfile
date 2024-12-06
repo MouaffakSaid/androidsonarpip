@@ -32,7 +32,7 @@ pipeline {
                 #if [ ! -d "$ANDROID_SDK_ROOT/avd/jenkins_avd.avd" ]; then
                   #sdkmanager --list
                   #sdkmanager --install   "system-images;android-35;google_apis;x86_64"
-                   
+                   kvm-ok
                   avdmanager create avd -n jenkins_avd -k "system-images;android-35;google_apis;x86_64" -d "pixel"
                    avdmanager list avd
                 #fi
