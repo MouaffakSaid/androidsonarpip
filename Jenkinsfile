@@ -8,7 +8,10 @@ pipeline {
         //mouaffak1/dockeragent  budtmo/docker-android
     }
 
+ environment {
 
+     APK_OUTPUT_PATH = "app/build/outputs/apk/debug/app-release.apk"
+ }
     stages {
         // stage('Clean Workspace') {
         //     steps {
@@ -85,7 +88,14 @@ pipeline {
                sh 'fastlane android build_apk ' // or assembleRelease based on your requirements
              //  sh './gradlew assembleDebug' // or assembleRelease based on your requirements
             }
-        }
+        
+         post {
+               success {
+                  archiveArtifacts artifacts: "${APK_OUTPUT_PATH}", allowEmptyArchive: false
+             }
+          }
+      }
+
     }
         
     
