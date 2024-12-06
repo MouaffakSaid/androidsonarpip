@@ -42,7 +42,7 @@ pipeline {
         stage('Start Emulator') {
             steps {
                 sh '''
-                emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect &
+                emulator -avd jenkins_avd -no-snapshot -no-audio -no-window -gpu swiftshader_indirect 
                 # Wait for the emulator to boot
                 #!/bin/bash
         adb wait-for-device
