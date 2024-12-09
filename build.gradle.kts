@@ -31,7 +31,7 @@ sonar  {
         property( "sonar.projectKey", "androidtest")
         property( "sonar.projectName", "androidtest")
         property("sonar.host.url", "http://192.168.100.240:9000")
-        property("sonar.login", "sqp_f19e595aa4fe5ad463ee2abef2eb0cbde84aa4d9")
+        property("sonar.login", "sqp_f2e74614fcec910ed97c61fc9326fbe4eb860e88")
         property ("sonar.java.coveragePlugin", "jacoco")
         property ("sonar.coverage.jacoco.xmlReportPaths", "${rootProject.projectDir}/app/build/reports/jacoco/JacocoDebugCodeCoverage/JacocoDebugCodeCoverage.xml")
     }
