@@ -96,6 +96,30 @@ pipeline {
           }
       }
 
+   stage('Push APK to Artifactory') {
+            steps {
+                script {
+                    // Rename APK to include a timestamp
+                    def timestamp = new Date().format("yyyyMMddHHmmss")
+                    def originalApk = 'app/build/outputs/apk/release/app-release.apk'
+                    def renamedApk = "app/build/outputs/apk/release/unittest-${timestamp}.apk"
+
+                    sh """
+                    mv ${originalApk} ${renamedApk}
+                    """
+
+                    // Use Jenkins credentials for secure username and password
+                    withCredentials([usernamePassword(credentialsId: 'artifactory-creds', usernameVariable: 'ARTIFACTORY_USER', passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
+                        sh """
+                        curl -u${ARTIFACTORY_USER}:${ARTIFACTORY_PASSWORD} -T ${renamedApk} \
+                        "http://192.168.100.240:8082/artifactory/android-unittest/"
+                        """
+                    }
+                }
+            }
+        }
+        
+
     }
         
     
