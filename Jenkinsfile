@@ -40,6 +40,7 @@ pipeline {
         stage('Connect To Emulator') {
             steps {
                 sh '''
+                docker run -d -p 6080:6080 -p 5555:5555 -e EMULATOR_DEVICE="Nexus S" -e WEB_VNC=true --device /dev/kvm --name android-container budtmo/docker-android
                adb connect 192.168.100.240:5555
                 adb devices
                
@@ -127,6 +128,7 @@ pipeline {
         always {
             echo 'Cleaning up workspace...'
            // sh './gradlew clean'
+            sh 'docker rm -f android-container'
         }
         success {
             echo 'Build and analysis completed successfully!'
