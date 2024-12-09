@@ -4,6 +4,7 @@ pipeline {
     agent {
         ///docker { image 'budtmo/docker-android' }
         docker { image 'cimg/android:2024.11.1' }
+        args '--cpus="6"
        //docker { image 'amrka/android-emulator:pixelC_tablet_playstore-latest' } 
         //mouaffak1/dockeragent  budtmo/docker-android
     }
@@ -40,7 +41,7 @@ pipeline {
         stage('Connect To Emulator') {
             steps {
                 sh '''
-                docker run -d -p 6080:6080 -p 5555:5555 -e EMULATOR_DEVICE="Nexus S" -e WEB_VNC=true --device /dev/kvm --name android-container budtmo/docker-android
+               #docker run -d -p 6080:6080 -p 5555:5555 -e EMULATOR_DEVICE="Nexus S" -e WEB_VNC=true --device /dev/kvm --name android-container budtmo/docker-android
                adb connect 192.168.100.240:5555
                 adb devices
                
