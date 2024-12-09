@@ -3,8 +3,10 @@ pipeline {
 
     agent {
         ///docker { image 'budtmo/docker-android' }
-        docker { image 'cimg/android:2024.11.1' }
-        args '--cpus="6" '
+        docker { image 'cimg/android:2024.11.1' 
+               args '--cpus="6" '
+               }
+        
        //docker { image 'amrka/android-emulator:pixelC_tablet_playstore-latest' } 
         //mouaffak1/dockeragent  budtmo/docker-android
     }
